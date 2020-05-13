@@ -2,33 +2,19 @@ package com.eck_analytics.Services;
 
 import com.eck_analytics.DAO.ResultDAO;
 import com.eck_analytics.Model.Result;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class ResultService {
-    private com.eck_analytics.DAO.ResultDAO ResultDAO = new ResultDAO();
+@Service
+public interface ResultService {
+    Result findResult(int id);
 
-    public ResultService() {
-    }
+    int saveResult(Result result);
 
-    public Result findResult(int id) {
-        return ResultDAO.findById(id);
-    }
+    void deleteResult(Result result);
 
-    public int saveResult(Result result) {
-       return ResultDAO.save(result);
-    }
+    void updateResult(Result result);
 
-    public void deleteResult(Result result) {
-        ResultDAO.delete(result);
-    }
-
-    public void updateResult(Result result) {
-        ResultDAO.update(result);
-    }
-
-    public List<Result> findAllResult() {
-        return ResultDAO.findAll();
-    }
-
+    List<Result> findAllResult();
 }

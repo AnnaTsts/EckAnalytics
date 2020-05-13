@@ -2,39 +2,21 @@ package com.eck_analytics.Services;
 
 import com.eck_analytics.DAO.ExampleDAO;
 import com.eck_analytics.Model.Example;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class ExampleService {
-    private ExampleDAO exampleDAO = new ExampleDAO();
+@Service
+public interface ExampleService {
+    Example findExample(int id);
 
-    public ExampleService() {
-    }
+    void saveExample(Example example);
 
-    public Example findExample(int id) {
-        return exampleDAO.findById(id);
-    }
+    void deleteExample(Example example);
 
-    public void saveExample(Example example) {
-        exampleDAO.save(example);
-    }
+    void updateExample(Example example);
 
-    public void deleteExample(Example example) {
-        exampleDAO.delete(example);
-    }
+    List<Example> findAllExample();
 
-    public void updateExample(Example example) {
-        exampleDAO.update(example);
-    }
-
-    public List<Example> findAllExample() {
-        return exampleDAO.findAll();
-    }
-
-    public void saveExamples(List<Example> examples){
-        for (Example example:examples
-             ) {
-            exampleDAO.save(example);
-        }
-    }
+    void saveExamples(List<Example> examples);
 }

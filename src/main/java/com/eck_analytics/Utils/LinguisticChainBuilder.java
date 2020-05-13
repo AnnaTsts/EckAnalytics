@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class LinguisticChainBuilder {
     //TODO Move constants to one Constants file
     public static final int MIN_CARDIO_VALUE = 800;
-    public static final int MAX_CARDIO_VALUE = 1200;
+    public static final int MAX_CARDIO_VALUE = 1250;
 
 
     /**
@@ -40,7 +40,7 @@ public class LinguisticChainBuilder {
         //IntStream.range(192,4444).forEach(System.out::println);
 //        System.out.println(IntStream.range(192,4444).mapToObj(x-> Stream.of((char) x)).toString());//.forEach(System.out::println);
 
-        if(value<MIN_CARDIO_VALUE||value>MAX_CARDIO_VALUE-1)
+        if(value<MIN_CARDIO_VALUE||value>MAX_CARDIO_VALUE)
             return ' ';
         double delta = (double) (MAX_CARDIO_VALUE - MIN_CARDIO_VALUE) / alphabet.numberOfLetters();
         int numberOfLetter = (int) Math.floor((value- MIN_CARDIO_VALUE )/ delta);

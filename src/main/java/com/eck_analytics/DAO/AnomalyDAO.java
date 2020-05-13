@@ -5,47 +5,19 @@ import com.eck_analytics.Model.Anomaly;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class AnomalyDAO {
-    public Anomaly findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Anomaly.class, id);
-    }
+@Repository
+public interface AnomalyDAO {
+    Anomaly findById(int id);
 
-    public Integer save(Anomaly anomaly) {
-        int id = 0;
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.save(anomaly);
-            id = anomaly.getId();
-            transaction.commit();
-        } catch (HibernateException he) {
-        }
+    Integer save(Anomaly anomaly);
 
-        session.close();
-        return id;
-    }
+    void update(Anomaly anomaly);
 
-    public void update(Anomaly anomaly) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(anomaly);
-        transaction.commit();
-        session.close();
-    }
+    void delete(Anomaly anomaly);
 
-    public void delete(Anomaly anomaly) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(anomaly);
-        transaction.commit();
-        session.close();
-    }
-
-    public List<Anomaly> findAll() {
-        List<Anomaly> anomalies = (List<Anomaly>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From anomaly").list();
-        return anomalies;
-    }
+    List<Anomaly> findAll();
 }

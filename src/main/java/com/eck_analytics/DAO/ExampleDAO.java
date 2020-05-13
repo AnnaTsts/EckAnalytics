@@ -4,41 +4,19 @@ package com.eck_analytics.DAO;
 import com.eck_analytics.Model.Example;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class ExampleDAO {
-    public Example findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Example.class, id);
-    }
+@Repository
+public interface ExampleDAO {
+    Example findById(int id);
 
-    public void save(Example example) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(example);
-        transaction.commit();
-        session.close();
-    }
+    void save(Example example);
 
-    public void update(Example example) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(example);
-        transaction.commit();
-        session.close();
-    }
+    void update(Example example);
 
-    public void delete(Example example) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(example);
-        transaction.commit();
-        session.close();
-    }
+    void delete(Example example);
 
-
-    public List<Example> findAll() {
-        List<Example> examples = (List<Example>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From example").list();
-        return examples;
-    }
+    List<Example> findAll();
 }

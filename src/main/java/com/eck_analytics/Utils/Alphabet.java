@@ -1,8 +1,11 @@
 package com.eck_analytics.Utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * used for storing alphabets in the system and all alphabets can easy add here
  * */
+@Slf4j
 public enum Alphabet {
     CYRILLIC ("абвгдеёжзийклмнопрстуфхцчшщъыьэюя".toCharArray()),
     LATIN ("abcdefghijklmnopqrstuvwxyz".toCharArray()),
@@ -26,21 +29,15 @@ public enum Alphabet {
     }
 
     public static char[] generateCharArray(int start,int end){
-        char[] result = new char[end - start];
+        char[] result = new char[(end - start)+1];
         int k =0;
         System.out.println("Alfabet");
         for(int i=start;i<end;i++){
             //System.out.println((char)i);
             k=k+1;
-        }
-        int z = 0;
-        for(int i=end;i>start;i--){
-            if(z<75)
-            System.out.println((char)i);
-           z=z+1;
+            result[k]=(char)i;
         }
 
-        System.out.println("Alfabet");
         return result;
     }
 }

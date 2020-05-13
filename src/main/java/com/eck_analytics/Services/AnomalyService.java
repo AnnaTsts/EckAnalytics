@@ -2,34 +2,19 @@ package com.eck_analytics.Services;
 
 import com.eck_analytics.DAO.AnomalyDAO;
 import com.eck_analytics.Model.Anomaly;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class AnomalyService {
-    //TODO generic service
-    private AnomalyDAO anomalyDAO = new AnomalyDAO();
+@Service
+public interface AnomalyService {
+    Anomaly findAnomaly(int id);
 
-    public AnomalyService() {
-    }
+    void saveAnomaly(Anomaly anomaly);
 
-    public Anomaly findAnomaly(int id) {
-        return anomalyDAO.findById(id);
-    }
+    void deleteAnomaly(Anomaly anomaly);
 
-    public void saveAnomaly(Anomaly anomaly) {
-        anomalyDAO.save(anomaly);
-    }
+    void updateAnomaly(Anomaly anomaly);
 
-    public void deleteAnomaly(Anomaly anomaly) {
-        anomalyDAO.delete(anomaly);
-    }
-
-    public void updateAnomaly(Anomaly anomaly) {
-        anomalyDAO.update(anomaly);
-    }
-
-    public List<Anomaly> findAllAnomaly() {
-        return anomalyDAO.findAll();
-    }
-
+    List<Anomaly> findAllAnomaly();
 }

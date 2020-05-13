@@ -2,10 +2,12 @@ package com.eck_analytics.DAO;
 
 
 import com.eck_analytics.Model.*;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+@Slf4j
 public class HibernateSessionFactoryUtil {
 
     private static SessionFactory sessionFactory;
@@ -26,7 +28,7 @@ public class HibernateSessionFactoryUtil {
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 
             } catch (Exception e) {
-                System.out.println("Error with sessionFactory!" + e);
+                log.debug("Error with sessionFactory!: ", e);
             }
         }
         return sessionFactory;

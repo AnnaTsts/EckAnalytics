@@ -4,50 +4,21 @@ import com.eck_analytics.Model.Tact;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
-public class TackDAO {
+@Repository
+public interface TackDAO {
 
     //TODO rewrite with generic com.diploma.DAO
-    public Tact findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Tact.class, id);
-    }
+    Tact findById(int id);
 
-    public Integer save(Tact tact) {
-        int id = 0;
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.save(tact);
-            id = tact.getId();
-            transaction.commit();
-        } catch (HibernateException he) {
-        }
+    Integer save(Tact tact);
 
-        session.close();
-        return id;
-    }
+    void update(Tact tact);
 
-    public void update(Tact tact) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(tact);
-        transaction.commit();
-        session.close();
-    }
+    void delete(Tact tact);
 
-    public void delete(Tact tact) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(tact);
-        transaction.commit();
-        session.close();
-    }
-
-    public List<Tact> findAll() {
-        List<Tact> results = (List<Tact>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From tack").list();
-        return results;
-    }
+    List<Tact> findAll();
 }

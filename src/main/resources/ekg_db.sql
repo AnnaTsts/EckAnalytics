@@ -34,6 +34,7 @@ CREATE TABLE result (
 CREATE TABLE anomaly (
                            id				integer 	PRIMARY KEY,
                            anomaly_string	text --10-20
+                           --добавить anomaly_type
 );
 
 CREATE TABLE person (

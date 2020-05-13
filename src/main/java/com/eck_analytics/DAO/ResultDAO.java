@@ -4,47 +4,19 @@ import com.eck_analytics.Model.Result;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class ResultDAO {
-    public Result findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Result.class, id);
-    }
+@Repository
+public interface ResultDAO {
+    Result findById(int id);
 
-    public Integer save(Result result) {
-        int id = 0;
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.save(result);
-            id = result.getId();
-            transaction.commit();
-        } catch (HibernateException he) {
-        }
+    Integer save(Result result);
 
-        session.close();
-        return id;
-    }
+    void update(Result result);
 
-    public void update(Result result) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(result);
-        transaction.commit();
-        session.close();
-    }
+    void delete(Result result);
 
-    public void delete(Result result) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(result);
-        transaction.commit();
-        session.close();
-    }
-
-    public List<Result> findAll() {
-        List<Result> results = (List<Result>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From result").list();
-        return results;
-    }
+    List<Result> findAll();
 }
