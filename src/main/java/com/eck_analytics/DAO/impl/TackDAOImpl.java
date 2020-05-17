@@ -5,7 +5,9 @@ import com.eck_analytics.DAO.TackDAO;
 import com.eck_analytics.Model.Tact;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,49 +15,37 @@ import java.util.List;
 @Repository
 public class TackDAOImpl implements TackDAO {
 
-    //TODO rewrite with generic com.diploma.DAO
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
     @Override
     public Tact findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Tact.class, id);
+        return sessionFactory.getCurrentSession().get(Tact.class, id);
     }
 
     @Override
     public Integer save(Tact tact) {
-        int id = 0;
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            session.save(tact);
-            id = tact.getId();
-            transaction.commit();
-        } catch (HibernateException he) {
-        }
-
-        session.close();
-        return id;
+        Session session = sessionFactory.getCurrentSession();
+        session.save(tact);
+        return tact.getId();
     }
 
     @Override
     public void update(Tact tact) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = sessionFactory.getCurrentSession();
         session.update(tact);
-        transaction.commit();
-        session.close();
     }
 
     @Override
     public void delete(Tact tact) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = sessionFactory.getCurrentSession();
         session.delete(tact);
-        transaction.commit();
-        session.close();
     }
 
     @Override
     public List<Tact> findAll() {
-        List<Tact> results = (List<Tact>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From tack").list();
+        List<Tact> results = (List<Tact>) sessionFactory.getCurrentSession().createQuery("From tack").list();
         return results;
     }
 }

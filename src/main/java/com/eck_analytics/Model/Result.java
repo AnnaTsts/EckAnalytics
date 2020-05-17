@@ -1,6 +1,8 @@
 package com.eck_analytics.Model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -21,6 +23,10 @@ public class Result {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private Person person;
+
+    public Result() {
+
+    }
 
     public Result(String resultString,int anomaly){
         this.resultString = resultString;

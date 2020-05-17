@@ -12,10 +12,12 @@ import com.eck_analytics.Services.LinguisticChainService;
 import com.eck_analytics.Services.ResultService;
 import com.eck_analytics.Utils.Alphabet;
 import com.eck_analytics.Utils.LinguisticChainBuilder;
-import org.apache.commons.csv.writer.CSVWriter;
+//import org.apache.commons.csv.writer.CSVWriter;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.Csv;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -23,9 +25,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+@Lazy
 @Service
 public class LinguisticChainServiceImpl implements LinguisticChainService {
-    public static final int CHAR_IN_ANOMALY = 1000;
+    public static final int CHAR_IN_ANOMALY = 100;
 
     private ExampleService exampleService;
     private ResultService resultService;
@@ -43,6 +46,7 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
         this.typeOfAnomaly = 0;
     }
 
+    @Transactional
     @Override
     public void getExamplesFromFiles(String fileCSVPath, String fileTxtPath) {
 
@@ -56,7 +60,6 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
         Result result = new Result("", 0);
         int resultId = resultService.saveResult(result);
         result.setId(resultId);
-
         try {
             BufferedReader fileStream = new BufferedReader(new SimpleFileReader(inputCsv));
             fileStream.readLine();
@@ -106,14 +109,13 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
 
             try {
                 while (nextLineInFile != null) {
-                    System.out.println(nextLineInFile);
                     Example currExample = saveActionForExample(nextLineInFile, result, examplesTxt);
                     if (currExample != null)
                         {   String record = "";
                             record=record+(String.valueOf(currExample.getV5())+",");
                             record= record+currExample.getLetter();
                             record=record+(",");
-                            if(currExample.getType()>2){
+                            if(currExample.getType()!=2){
                                 record=record+("+,");
                             }
                             else record=record+("-,");
@@ -130,7 +132,6 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
             } catch (FileNotFoundException e) {
                 System.out.println("No file was read");
             } catch (IOException e) {
-                System.out.println("!!!!");
                 System.out.println("There was a problem reading the file");
                 System.out.println("exaption"+e.getMessage());
             }
@@ -153,7 +154,6 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
      */
     private void getSimilarExampleByPrevId(List<Example> examples, Example example) {
         Example exampleFromTxt = null;
-        //System.out.println(examples.size());
         for (Example e : examples
         ) {
             if (e.getPrevious_id() == example.getPrevious_id())
@@ -179,13 +179,12 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
     private Example saveActionForExample(String nextLineInFile, Result result, List<Example> examplesTxt) {
         Example currExample = SimpleFileReader.constructExampleFromStringCsv(nextLineInFile);
         getSimilarExampleByPrevId(examplesTxt, currExample);
-        //currExample.setResult(result);
-        System.out.println(currExample.getV5());
+        currExample.setResult(result);
         if (LinguisticChainBuilder.getLetter(currExample.getV5(), Alphabet.TEST_ARRAY) != ' ') {
             currExample.setLetter(LinguisticChainBuilder.getLetter(currExample.getV5(), Alphabet.TEST_ARRAY));
-            //result.setResultString(result.getResultString() + currExample.getLetter());
+            result.setResultString(result.getResultString() + currExample.getLetter());
             //exampleService.saveExample(currExample);
-            //resultService.updateResult(result);
+            resultService.updateResult(result);
         } else return null;
         return currExample;
     }
@@ -208,19 +207,12 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
             } else {
                 if (examplesForAnomaly.size() >= CHAR_IN_ANOMALY - 1) {
                     examplesForAnomaly.add(currExample);
-                    StringBuilder anomaly = new StringBuilder();
-                    System.out.println();
+                    String anomaly = new String();
                     for (Example e : examplesForAnomaly) {
-
-                        anomaly.append(e.getLetter());
-                        if (e.getType() > 2)
-                            System.out.println("!!!!");
-                        System.out.println(e.getV5() + "  ");// + e.getLetter());//+" "+
-                        // e.getLetter());
-                        // System.out.println( e.getLetter());
+                        anomaly = anomaly+(e.getLetter());
                     }
 
-                    anomalyService.saveAnomaly(new Anomaly(anomaly.toString(), typeOfAnomaly));
+                    anomalyService.saveAnomaly(new Anomaly(anomaly, typeOfAnomaly));
                     isAnomalyNow = false;
                     typeOfAnomaly = 0;
                 } else examplesForAnomaly.add(currExample);

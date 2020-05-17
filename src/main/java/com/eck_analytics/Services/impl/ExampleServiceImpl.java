@@ -4,10 +4,12 @@ import com.eck_analytics.DAO.ExampleDAO;
 import com.eck_analytics.Model.Example;
 import com.eck_analytics.Services.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Lazy
 @Service
 public class ExampleServiceImpl implements ExampleService {
     private ExampleDAO exampleDAO;

@@ -31,9 +31,7 @@ public enum Alphabet {
     public static char[] generateCharArray(int start,int end){
         char[] result = new char[(end - start)+1];
         int k =0;
-        System.out.println("Alfabet");
         for(int i=start;i<end;i++){
-            //System.out.println((char)i);
             k=k+1;
             result[k]=(char)i;
         }

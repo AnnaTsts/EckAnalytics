@@ -3,10 +3,10 @@ package com.eck_analytics;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class EckAnalyticsApplicationTests {
 
-    @Test
+//    @Test
     void contextLoads() {
     }
 

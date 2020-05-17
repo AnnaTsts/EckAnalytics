@@ -12,17 +12,28 @@ public class Example {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     //special values
-    private int mlii; //first row from csv
+    @Column(name = "mlii")
+    private int mlii; //first row from csv\
+
+    @Column(name = "v5")
     private int v5; //second row from csv
 
     @Column(name = "example_time")
     private int timeOfExample;
 
+    @Column(name = "type")
     private int type;
+
+    @Column(name = "sub")
     private int sub;
+
+    @Column(name = "chan")
     private int chan;
+
+    @Column(name = "num")
     private int num;
 
+    @Column(name = "letter")
     private char letter;
 
     //@Column(name = "result_id")
@@ -33,6 +44,10 @@ public class Example {
     private Result result;
 
     private int previous_id;
+
+    public Example() {
+
+    }
 
     public Example(int time, int type, int sub, int chan, int num, int previous_id) {
         timeOfExample = time;
@@ -47,4 +62,6 @@ public class Example {
         this.mlii = mlii;
         this.v5 = v5;
     }
+
+
 }

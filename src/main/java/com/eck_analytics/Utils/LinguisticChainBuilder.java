@@ -9,8 +9,8 @@ import java.util.ArrayList;
 @Getter
 public class LinguisticChainBuilder {
     //TODO Move constants to one Constants file
-    public static final int MIN_CARDIO_VALUE = 800;
-    public static final int MAX_CARDIO_VALUE = 1250;
+    public static final int MIN_CARDIO_VALUE = Constants.LinguisticConstant.MIN;
+    public static final int MAX_CARDIO_VALUE = Constants.LinguisticConstant.MAX;
 
 
     /**

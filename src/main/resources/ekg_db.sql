@@ -45,6 +45,15 @@ CREATE TABLE person (
                        sex					integer
 );
 
+
+CREATE TABLE user_data (
+                       id					integer 	PRIMARY KEY,
+                       username				text,
+                       email				text,
+                       password				text,
+                       is_mail_verified		bool
+);
+
 ALTER TABLE example
     ADD CONSTRAINT fk_result FOREIGN KEY (result_id) REFERENCES result (id);
 ;

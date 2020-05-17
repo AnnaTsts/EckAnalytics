@@ -18,6 +18,9 @@ public class Anomaly {
     @Column(name = "anomaly_type_id")
     private int anomalyType;
 
+    public Anomaly() {
+    }
+
     public Anomaly(String anomalyString, int anomalyType) {
         this.anomalyString = anomalyString;
         this.anomalyType = anomalyType;

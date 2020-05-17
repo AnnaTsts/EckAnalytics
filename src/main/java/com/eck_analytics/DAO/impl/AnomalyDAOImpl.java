@@ -6,7 +6,9 @@ import com.eck_analytics.DAO.HibernateSessionFactoryUtil;
 import com.eck_analytics.Model.Anomaly;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,47 +16,43 @@ import java.util.List;
 @Repository
 public class AnomalyDAOImpl implements AnomalyDAO {
 
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
     @Override
     public Anomaly findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Anomaly.class, id);
+        return sessionFactory.getCurrentSession().get(Anomaly.class, id);
     }
 
     @Override
     public Integer save(Anomaly anomaly) {
         int id = 0;
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = sessionFactory.getCurrentSession();
         try {
+            anomaly.setAnomalyString(anomaly.getAnomalyString().replaceAll("\u0000", ""));
             session.save(anomaly);
             id = anomaly.getId();
-            transaction.commit();
         } catch (HibernateException he) {
         }
-
-        session.close();
         return id;
     }
 
     @Override
     public void update(Anomaly anomaly) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        anomaly.setAnomalyString(anomaly.getAnomalyString().replaceAll("\u0000", ""));
+        Session session =sessionFactory.getCurrentSession();
         session.update(anomaly);
-        transaction.commit();
-        session.close();
     }
 
     @Override
     public void delete(Anomaly anomaly) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = sessionFactory.getCurrentSession();
         session.delete(anomaly);
-        transaction.commit();
-        session.close();
     }
 
     @Override
     public List<Anomaly> findAll() {
-        return (List<Anomaly>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From anomaly").list();
+        return (List<Anomaly>) sessionFactory.getCurrentSession().createQuery("From anomaly").list();
     }
 }
