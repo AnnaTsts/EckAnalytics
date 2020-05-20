@@ -2,13 +2,14 @@ package com.eck_analytics.DAO.impl;
 
 import com.eck_analytics.DAO.HibernateSessionFactoryUtil;
 import com.eck_analytics.DAO.UserDAO;
+import com.eck_analytics.Model.Person;
 import com.eck_analytics.Model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -18,8 +19,9 @@ public class UserDAOImpl implements UserDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Transactional
     public User findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(User.class, id);
+        return sessionFactory.getCurrentSession().get(User.class, id);
     }
 
     public User getDetailedUserByUsernameOrEmail(String cred) {
@@ -37,7 +39,11 @@ public class UserDAOImpl implements UserDAO {
     public Integer save(User user) {
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
+        Person person = new Person();
+        person.setId(user.getId());
+        session.save(person);
         return user.getId();
+
     }
 
     @Override
@@ -54,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> findAll() {
-        List<User> results = (List<User>) sessionFactory.getCurrentSession().createQuery("From user_data").list();
+        List<User> results = (List<User>) sessionFactory.getCurrentSession().createQuery("From User").list();
         return results;
     }
 

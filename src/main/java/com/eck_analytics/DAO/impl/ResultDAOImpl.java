@@ -51,7 +51,7 @@ public class ResultDAOImpl implements ResultDAO {
 
     @Override
     public List<Result> findAll() {
-        List<Result> results = (List<Result>)  sessionFactory.getCurrentSession().createQuery("From result").list();
+        List<Result> results = (List<Result>)  sessionFactory.getCurrentSession().createQuery("From Result ").list();
         return results;
     }
 }

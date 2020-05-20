@@ -45,7 +45,7 @@ public class TackDAOImpl implements TackDAO {
 
     @Override
     public List<Tact> findAll() {
-        List<Tact> results = (List<Tact>) sessionFactory.getCurrentSession().createQuery("From tack").list();
+        List<Tact> results = (List<Tact>) sessionFactory.getCurrentSession().createQuery("From Tact ").list();
         return results;
     }
 }

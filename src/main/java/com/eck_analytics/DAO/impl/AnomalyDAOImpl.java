@@ -53,6 +53,6 @@ public class AnomalyDAOImpl implements AnomalyDAO {
 
     @Override
     public List<Anomaly> findAll() {
-        return (List<Anomaly>) sessionFactory.getCurrentSession().createQuery("From anomaly").list();
+        return (List<Anomaly>) sessionFactory.getCurrentSession().createQuery("From Anomaly ").list();
     }
 }

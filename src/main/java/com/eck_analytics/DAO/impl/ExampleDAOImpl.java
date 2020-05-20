@@ -44,6 +44,6 @@ public class ExampleDAOImpl implements ExampleDAO {
 
     @Override
     public List<Example> findAll() {
-        return (List<Example>) sessionFactory.getCurrentSession().createQuery("From example").list();
+        return (List<Example>) sessionFactory.getCurrentSession().createQuery("From Example ").list();
     }
 }
