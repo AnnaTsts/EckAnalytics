@@ -10,7 +10,7 @@ public class DamerauLevenshtein {
      * @return The distance between source and target strings.
      * @throws IllegalArgumentException If either source or target is null.
      */
-    public static int calculateDistance(CharSequence source, CharSequence target) {
+    public int calculateDistance(CharSequence source, CharSequence target) {
         if (source == null || target == null) {
             throw new IllegalArgumentException("Parameter must not be null");
         }

@@ -8,7 +8,6 @@ public class YСompression implements Сompression {
         for (int i = 0; i < source.length; i++) {
             result[i] = (char) (source[i] * size);
         }
-
         return result;
     }
 }

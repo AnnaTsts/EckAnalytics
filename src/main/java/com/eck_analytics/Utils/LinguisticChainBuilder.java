@@ -8,7 +8,6 @@ import java.util.ArrayList;
 @Setter
 @Getter
 public class LinguisticChainBuilder {
-    //TODO Move constants to one Constants file
     public static final int MIN_CARDIO_VALUE = Constants.LinguisticConstant.MIN;
     public static final int MAX_CARDIO_VALUE = Constants.LinguisticConstant.MAX;
 
@@ -31,15 +30,6 @@ public class LinguisticChainBuilder {
     }
 
     public static char getLetter(int value, Alphabet alphabet ){
-        //alphabet.getLetters()
-//        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//        for (char c :alphabet.getLetters()
-//             ) {
-//            System.out.println(c+" ");
-//        }
-        //IntStream.range(192,4444).forEach(System.out::println);
-//        System.out.println(IntStream.range(192,4444).mapToObj(x-> Stream.of((char) x)).toString());//.forEach(System.out::println);
-
         if(value<MIN_CARDIO_VALUE||value>MAX_CARDIO_VALUE)
             return ' ';
         double delta = (double) (MAX_CARDIO_VALUE - MIN_CARDIO_VALUE) / alphabet.numberOfLetters();

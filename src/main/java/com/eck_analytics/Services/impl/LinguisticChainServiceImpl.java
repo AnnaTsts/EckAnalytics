@@ -11,6 +11,7 @@ import com.eck_analytics.Services.ExampleService;
 import com.eck_analytics.Services.LinguisticChainService;
 import com.eck_analytics.Services.ResultService;
 import com.eck_analytics.Utils.Alphabet;
+import com.eck_analytics.Utils.Constants;
 import com.eck_analytics.Utils.LinguisticChainBuilder;
 //import org.apache.commons.csv.writer.CSVWriter;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.Csv;
@@ -28,7 +29,7 @@ import java.util.List;
 @Lazy
 @Service
 public class LinguisticChainServiceImpl implements LinguisticChainService {
-    public static final int CHAR_IN_ANOMALY = 100;
+    public static final int CHAR_IN_ANOMALY = Constants.LinguisticConstant.ANOMALYSIZE;
 
     private ExampleService exampleService;
     private ResultService resultService;

@@ -3,6 +3,7 @@ package com.eck_analytics.Controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 
@@ -13,9 +14,8 @@ import java.io.File;
 public class ResultController {
 
     @PostMapping
-    public ResponseEntity<?> processEKG(@RequestBody File file){
-        System.out.println("WIN");
-        log.debug("!!!!");
+    public ResponseEntity<?> processEKG(@RequestParam("file") MultipartFile file){
+
         return ResponseEntity.ok().build();
     }
 }

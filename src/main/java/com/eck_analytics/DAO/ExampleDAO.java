@@ -1,6 +1,5 @@
 package com.eck_analytics.DAO;
 
-
 import com.eck_analytics.Model.Example;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
