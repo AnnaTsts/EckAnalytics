@@ -74,6 +74,7 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
                     nextLineInFile = fileStream.readLine();
                 }
                 fileStream.close();
+                System.out.println("Operation is done");
 
             } catch (FileNotFoundException e) {
                 System.out.println("No file was read");
@@ -191,8 +192,9 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
     }
 
     private void checkAnomaly(Example currExample, List<Example> examplesForAnomaly, Result result) {
-        //TODO Move examplesForAnomaly.add(currExample); here as it is present in every branch of this method
-        if (currExample.getType() > 2) {
+
+
+        if (currExample.getType() > 2 || currExample.getType()==1) {
 
             isAnomalyNow = true;
             typeOfAnomaly = currExample.getType();
@@ -201,7 +203,7 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
             resultService.updateResult(result);
         } else {
             if (!isAnomalyNow) {
-                if (examplesForAnomaly.size() >= CHAR_IN_ANOMALY / 2) {
+                if (examplesForAnomaly.size() >= (CHAR_IN_ANOMALY / 2)) {
                     examplesForAnomaly.remove(0);
                     examplesForAnomaly.add(currExample);
                 } else examplesForAnomaly.add(currExample);
@@ -216,6 +218,9 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
                     anomalyService.saveAnomaly(new Anomaly(anomaly, typeOfAnomaly));
                     isAnomalyNow = false;
                     typeOfAnomaly = 0;
+                    List<Example> examples = examplesForAnomaly.subList(0,CHAR_IN_ANOMALY / 2);
+                    examplesForAnomaly.removeAll(examples);
+//                    examplesForAnomaly.addAll(examples);
                 } else examplesForAnomaly.add(currExample);
             }
         }

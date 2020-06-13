@@ -20,9 +20,17 @@ public class UserController{
 
     @PostMapping("/edit")
     public ResponseEntity<?> changeUserDetails(@RequestBody EditProfile editProfile){
-        Person person = new Person(editProfile.getAge(),editProfile.getWeight(),
+        System.out.println("---------------");
+        Object potentialPrincipal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (potentialPrincipal instanceof UserPrincipal) {
+            int id = ((UserPrincipal) potentialPrincipal).getId();
+
+        Person person = new Person(id,editProfile.getAge(),editProfile.getWeight(),
                 editProfile.getHeight(),editProfile.getSex());
-        personService.savePerson(person);
+        personService.updatePerson(person);
+
+        }
         return ResponseEntity.ok().build();
     }
 

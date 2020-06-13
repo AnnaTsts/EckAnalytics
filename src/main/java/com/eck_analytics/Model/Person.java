@@ -19,7 +19,12 @@ public class Person {
     public Person(){
     }
 
-    public Person(int age, int weight, int height, int sex) {
+    public Person(int id){
+        this.id = id;
+    }
+
+    public Person(int id, int age, int weight, int height, int sex) {
+        this.id = id;
         this.age = age;
         this.weight = weight;
         this.height = height;

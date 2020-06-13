@@ -36,7 +36,7 @@ public class PersonDAOImpl implements PersonDAO {
     @Override
     public void update(Person person) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(person);
+        session.saveOrUpdate(person);
     }
 
     @Override

@@ -114,14 +114,38 @@ public class CLIRunner implements CommandLineRunner {
     @Override
     public void run(String ... args) throws Exception {
 //        exampleService.saveExamples(linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/101.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/101annotations.txt"));
-        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/107.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/107annotations.txt");
+        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/100.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/100annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/101.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/101annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/102.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/102annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/103.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/103annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/104.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/104annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/105.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/105annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/106.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/106annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/107.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/107annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/108.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/108annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/109.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/109annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/111.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/111annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/112.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/112annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/113.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/113annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/114.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/114annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/115.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/115annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/116.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/116annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/117.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/117annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/118.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/118annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/119.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/119annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/121.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/121annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/122.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/122annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/123.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/123annotations.txt");
+//        linguisticChainService.getExamplesFromFiles("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/124.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/124annotations.txt");
+
+        System.out.println("Success");
         //Example e = new Example(10000,10000,10000,10000,10000,10000);
         //ExampleService.sa
-        try {
-            linguisticChainService.saveChainIntoFile("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/107.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/107annotations.txt","/Users/annatsytsyluik/Documents/КПИ/Example_7");
-
-        }
-        catch (Exception e){}
+//        try {
+//            linguisticChainService.saveChainIntoFile("/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/100.csv","/Users/annatsytsyluik/Documents/КПИ/Диплом/mitbih-database/100annotations.txt","/Users/annatsytsyluik/Documents/КПИ/Example_7");
+//
+//        }
+//        catch (Exception e){}
 
     }
 }

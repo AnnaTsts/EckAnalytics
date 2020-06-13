@@ -8,8 +8,10 @@ import com.eck_analytics.Services.PersonService;
 import com.eck_analytics.dto.response.UserSummary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class PersonServiceImpl implements PersonService {
     private PersonDAO personDAO;
 

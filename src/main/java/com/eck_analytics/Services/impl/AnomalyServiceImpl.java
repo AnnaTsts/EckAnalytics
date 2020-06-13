@@ -5,10 +5,12 @@ import com.eck_analytics.Model.Anomaly;
 import com.eck_analytics.Services.AnomalyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class AnomalyServiceImpl implements AnomalyService {
     //TODO generic service
     private AnomalyDAO anomalyDAO;
@@ -25,6 +27,7 @@ public class AnomalyServiceImpl implements AnomalyService {
 
     @Override
     public void saveAnomaly(Anomaly anomaly) {
+        System.out.println("!!!");
         anomalyDAO.save(anomaly);
     }
 

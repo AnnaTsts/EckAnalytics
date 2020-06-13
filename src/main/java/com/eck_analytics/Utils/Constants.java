@@ -25,6 +25,6 @@ public interface Constants {
         Integer MIN = 800;
         Integer MAX = 1250;
         Integer NOT_ANOMALY_TYPE = 2;
-        Integer ANOMALYSIZE = 100;
+        Integer ANOMALYSIZE = 50;
     }
 }

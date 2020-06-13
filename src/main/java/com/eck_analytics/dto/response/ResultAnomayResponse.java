@@ -1,6 +1,7 @@
 package com.eck_analytics.dto.response;
 
 
+import com.eck_analytics.Model.AnomalyResponse;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -12,11 +13,4 @@ public class ResultAnomayResponse {
     private List<AnomalyResponse> responses = new ArrayList<>();
 
 
-    @Data
-    public class AnomalyResponse{
-        private List<Integer> numbers;
-        private List<Character> letters;
-        private String type;
-        private Double probability;
-    }
 }

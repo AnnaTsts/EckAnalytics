@@ -28,9 +28,11 @@ public class AnomalyDAOImpl implements AnomalyDAO {
     @Override
     public Integer save(Anomaly anomaly) {
         int id = 0;
+        System.out.println(anomaly.getAnomalyString());
         Session session = sessionFactory.getCurrentSession();
         try {
             anomaly.setAnomalyString(anomaly.getAnomalyString().replaceAll("\u0000", ""));
+            System.out.println(anomaly.getAnomalyString().length());
             session.save(anomaly);
             id = anomaly.getId();
         } catch (HibernateException he) {

@@ -1,7 +1,9 @@
 package com.eck_analytics.Services.impl;
 
 
+import com.eck_analytics.DAO.PersonDAO;
 import com.eck_analytics.DAO.UserDAO;
+import com.eck_analytics.Model.Person;
 import com.eck_analytics.Model.User;
 import com.eck_analytics.Utils.Constants;
 import com.eck_analytics.dto.request.LoginRequest;
@@ -26,6 +28,9 @@ public class AuthService {
     @Autowired
     private UserDAO userDao;
 
+    @Autowired
+    private PersonDAO personDAO;
+
 
     @Transactional
     public ResponseEntity registerUser(SignUpRequest request, PasswordEncoder encoder) {
@@ -41,7 +46,11 @@ public class AuthService {
         User user = new User(1, request.getUsername(),
                 encoder.encode(request.getPassword()), request.getEmail(),false);
 
-        userDao.save(user);
+
+        Integer save = userDao.save(user);
+        Person person = new Person(save);
+
+        personDAO.save(person);
 
         return Constants.ResponseEntities.USER_REGISTERED_SUCCESSFULLY;
     }
