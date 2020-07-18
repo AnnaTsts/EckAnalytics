@@ -34,6 +34,8 @@ public class LinguisticChainBuilder {
             return ' ';
         double delta = (double) (MAX_CARDIO_VALUE - MIN_CARDIO_VALUE) / alphabet.numberOfLetters();
         int numberOfLetter = (int) Math.floor((value- MIN_CARDIO_VALUE )/ delta);
+        if(numberOfLetter==alphabet.numberOfLetters())
+            numberOfLetter=numberOfLetter-1;
         return alphabet.getLetters()[numberOfLetter];
     }
 }

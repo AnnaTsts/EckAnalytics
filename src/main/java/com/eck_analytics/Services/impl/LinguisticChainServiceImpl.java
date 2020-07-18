@@ -58,9 +58,9 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
         List<Example> examplesForAnomaly = new ArrayList<>();
 
 
-        Result result = new Result("", 0);
-        int resultId = resultService.saveResult(result);
-        result.setId(resultId);
+        Result result = new Result("test", 0);
+        //int resultId = resultService.saveResult(result);
+        result.setId(0);
         try {
             BufferedReader fileStream = new BufferedReader(new SimpleFileReader(inputCsv));
             fileStream.readLine();
@@ -142,8 +142,6 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
-        System.out.println("Operation is done");
-
 
 
     }
@@ -186,7 +184,7 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
             currExample.setLetter(LinguisticChainBuilder.getLetter(currExample.getV5(), Alphabet.TEST_ARRAY));
             result.setResultString(result.getResultString() + currExample.getLetter());
             //exampleService.saveExample(currExample);
-            resultService.updateResult(result);
+//            resultService.updateResult(result);
         } else return null;
         return currExample;
     }
@@ -200,7 +198,7 @@ public class LinguisticChainServiceImpl implements LinguisticChainService {
             typeOfAnomaly = currExample.getType();
             examplesForAnomaly.add(currExample);
             result.setAnomaly(result.getAnomaly() + 1);
-            resultService.updateResult(result);
+//            resultService.updateResult(result);
         } else {
             if (!isAnomalyNow) {
                 if (examplesForAnomaly.size() >= (CHAR_IN_ANOMALY / 2)) {

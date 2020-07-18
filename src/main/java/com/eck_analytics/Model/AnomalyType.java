@@ -29,4 +29,16 @@ public enum AnomalyType {
         }
         return 0;
     }
+
+    public static String getTypeString(Integer typeString) {
+        switch (typeString){
+            case(1): return "Tachycardia";
+            case(2): return "Test2";
+            case(3): return "Arrhythmia";
+            case(4): return "Myocardial ischemia";
+            case(5): return "Extrasystole";
+            case(6): return "Tachycardia";
+        }
+        return "";
+    }
 }

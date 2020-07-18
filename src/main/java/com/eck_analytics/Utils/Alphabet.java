@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 public enum Alphabet {
     CYRILLIC ("абвгдеёжзийклмнопрстуфхцчшщъыьэюя".toCharArray()),
     LATIN ("abcdefghijklmnopqrstuvwxyz".toCharArray()),
-    TEST_ARRAY(generateCharArray(192,292));
+    TEST_ARRAY(generateCharArray(192,267));
 
 
     private final int numberOfLetters;

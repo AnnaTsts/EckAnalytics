@@ -27,6 +27,7 @@ public class ResultDAOImpl implements ResultDAO {
     public Integer save(Result result) {
         int id = 0;
         Session session = sessionFactory.getCurrentSession();
+        result.setResultString(result.getResultString().replaceAll("\u0000", ""));
         try {
             session.save(result);
             id = result.getId();
